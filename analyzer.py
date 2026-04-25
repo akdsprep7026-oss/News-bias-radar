@@ -39,13 +39,9 @@ def load_sentiment_analyzer():
 
 @st.cache_resource
 def load_spacy_model():
-    """Loads the spaCy model, downloading it if not present."""
-    try:
-        return spacy.load("en_core_web_md")
-    except OSError:
-        print("Downloading spaCy model...")
-        spacy.cli.download("en_core_web_md")
-        return spacy.load("en_core_web_md")
+    """Loads the pre-installed spaCy model."""
+    # Do NOT try to download here; it causes permission errors
+    return spacy.load("en_core_web_md")
 
 # --- ANALYSIS FUNCTIONS ---
 
