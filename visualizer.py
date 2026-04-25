@@ -76,6 +76,6 @@ def create_bias_chart(bias_data):
         showlegend=False,
         height=250,
         margin=dict(l=20, r=20, t=40, b=20),
-        yaxis=dict(showticklabels=False) # Hide y-axis labels as bars are distinct
+        yaxis=dict(showticklabels=False) 
     )
     return fig

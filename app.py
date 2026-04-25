@@ -122,7 +122,7 @@ if submit_button:
                     article_text = article.text
                     summary = summarize_text(article_text)
                     sentiment = analyze_sentiment(article_text)
-                    bias = analyze_bias_advanced(article_text) # <-- UPDATED FUNCTION CALL
+                    bias = analyze_bias_advanced(article_text)
 
                     # Create visualizations
                     sentiment_fig = create_sentiment_chart(sentiment)
