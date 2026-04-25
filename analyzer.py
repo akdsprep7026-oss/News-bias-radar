@@ -6,25 +6,6 @@ import spacy
 import numpy as np
 import nltk 
 
-# --- MODEL LOADING FUNCTIONS (CACHED) ---
-
-@st.cache_resource
-def load_nltk_resources():
-    """Downloads necessary NLTK resources once."""
-    nltk.download('punkt_tab')
-    nltk.download('punkt')
-
-@st.cache_resource
-def load_summarizer():
-    # Call the resource loader first
-    load_nltk_resources()
-    """Loads the summarization model once and caches it."""
-    print("--- Loading Summarization Model (first time only) ---")
-    return pipeline("summarization", model="facebook/bart-large-cnn")
-
-
-
-
 
 
 @st.cache_resource
