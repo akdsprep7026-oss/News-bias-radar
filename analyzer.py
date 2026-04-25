@@ -39,9 +39,13 @@ def load_sentiment_analyzer():
 
 @st.cache_resource
 def load_spacy_model():
-    """Loads the spaCy model with word vectors once and caches it."""
-    print("--- Loading spaCy NLP Model (first time only) ---")
-    return spacy.load("en_core_web_md")
+    """Loads the spaCy model, downloading it if not present."""
+    try:
+        return spacy.load("en_core_web_md")
+    except OSError:
+        print("Downloading spaCy model...")
+        spacy.cli.download("en_core_web_md")
+        return spacy.load("en_core_web_md")
 
 # --- ANALYSIS FUNCTIONS ---
 
