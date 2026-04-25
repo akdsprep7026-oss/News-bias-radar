@@ -24,8 +24,12 @@ except LookupError:
 @st.cache_resource
 def load_summarizer():
     """Loads the summarization model once and caches it."""
-    print("--- Loading Summarization Model (first time only) ---")
-    return pipeline("summarization", model="facebook/bart-large-cnn")
+    # We explicitly provide the model name to ensure the task is recognized
+    return pipeline(
+        "summarization", 
+        model="facebook/bart-large-cnn",
+        framework="pt" # Forces it to use PyTorch
+    )
 
 @st.cache_resource
 def load_sentiment_analyzer():
