@@ -4,7 +4,20 @@ from transformers import pipeline
 import re
 import spacy
 import numpy as np
-import nltk 
+import nltk
+
+from newspaper import Article, Config
+from newspaper.article import ArticleException
+
+# This must happen before any newspaper3k functions are called
+try:
+    nltk.data.find('tokenizers/punkt_tab')
+except LookupError:
+    nltk.download('punkt_tab')
+    nltk.download('punkt')
+
+
+    
 
 
 
