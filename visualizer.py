@@ -8,7 +8,7 @@ def create_sentiment_chart(sentiment_data):
     label = sentiment_data['label']
     score = sentiment_data['score']
     
-    # Define color and text based on sentiment
+    # Defining color and text based on sentiment
     if label == 'NEGATIVE':
         color = "#D9534F" # Red
         text = f"Negative ({score:.2%})"
@@ -42,11 +42,11 @@ def create_bias_chart(bias_data):
     """
     Creates a more polished bar chart for political bias, handling the zero-score case.
     """
-    # If both scores are 0, we don't need a chart. Return None.
+    # If both scores are 0, we don't need a chart. Returning None.
     if bias_data['left_leaning_score'] == 0 and bias_data['right_leaning_score'] == 0:
         return None
 
-    # Create a DataFrame from the bias data
+    # Creating a DataFrame from the bias data
     df = pd.DataFrame([
         {'Leaning': 'Left-Leaning', 'Count': bias_data['left_leaning_score']},
         {'Leaning': 'Right-Leaning', 'Count': bias_data['right_leaning_score']}
