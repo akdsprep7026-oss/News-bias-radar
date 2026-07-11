@@ -2,7 +2,7 @@ import streamlit as st
 import re
 
 
-# Import our project modules, including the new advanced bias function
+# Importing our project modules
 from article_fetcher import fetch_article_data
 from analyzer import summarize_text, analyze_sentiment, analyze_bias_advanced
 from visualizer import create_sentiment_chart, create_bias_chart
@@ -118,19 +118,19 @@ if submit_button:
                 if not article or not article.text:
                     st.error("Failed to retrieve the article. The website might be blocking automated access, or the URL may be incorrect. Please try a different source.")
                 else:
-                    # Run all analyses, using the new advanced function
+                    # Runnig all analyses, using the advanced function
                     article_text = article.text
                     summary = summarize_text(article_text)
                     sentiment = analyze_sentiment(article_text)
                     bias = analyze_bias_advanced(article_text)
 
-                    # Create visualizations
+                    # Creating visualizations
                     sentiment_fig = create_sentiment_chart(sentiment)
                     bias_fig = create_bias_chart(bias)
                     
                     st.header(f"Analysis Report: *{article.title}*")
 
-                    # --- Display Results in Tabs ---
+                    # --- Displaying Results in Tabs ---
                     tab1, tab2, tab3 = st.tabs(["📝 Summary", "🎭 Sentiment", "⚖️ Political Bias"])
 
                     with tab1:
@@ -151,12 +151,12 @@ if submit_button:
 
                     with tab3:
                         if bias_fig:
-                            # Update the chart title and text for the new scoring method
+                            # Updating the chart title and text for the new scoring method
                             bias_fig.update_layout(title_text='Political Bias Semantic Similarity')
                             st.plotly_chart(bias_fig, use_container_width=True)
                         else:
                             st.success("Our analysis did not detect significant politically-leaning language.")
-                        # Update the disclaimer to explain the new method
+                        # Updating the disclaimer to explain the new method
                         st.warning("Disclaimer: Bias detection is experimental. It measures the semantic similarity of the article's language to core political concepts, not a definitive judgment of bias.")
 
             except Exception as e:
